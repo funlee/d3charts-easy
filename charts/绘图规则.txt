@@ -1,0 +1,2 @@
+1.参数element必须是一个具备高宽的 DOM 容器，类似echarts,配置项中只能指定grid，不再指定width和height
+2.一个div容器中只包含一个svg元素，详见：'common/svg.js'

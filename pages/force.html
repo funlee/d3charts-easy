@@ -2,7 +2,7 @@
 <html lang="en">
     <head>
         <meta charset="UTF-8">
-        <title>d3charts - 饼图</title>
+        <title>d3charts - 力导向图</title>
         <link rel="stylesheet" type="text/css" href="../style/common.css">
         <style type="text/css">
             .tooltip{
@@ -20,17 +20,9 @@
     </head>
     <body>
         <div class="chart">
-            <svg>
-                <defs>
-                    <pattern id="fill-img" x="0" y="0" width="1" height="1" patternUnits="objectBoundingBox">
-                        <image xlink:href="../images/fill.png">
-                    </pattern>
-                </defs>
-            </svg>
+            
             <div class="tooltip">
-                <span class="name">测试：</span>
-                <span class="value">500</span>
-                <p>占比：<span class="rate">50%</span></p>
+                <span class="show-text">测试</span>
             </div>
         </div>
         <div class="btn-wrap">
@@ -39,7 +31,7 @@
             <button class="btn dj-btn">递减排序</button>
         </div>
         <script type="text/javascript" src='../dist/vendor.js'></script>
-        <script type="text/javascript" src='../dist/pie.js'></script>
+        <script type="text/javascript" src='../dist/force.js'></script>
     </body>
 </html>
 

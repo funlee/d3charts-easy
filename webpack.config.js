@@ -2,6 +2,9 @@ const path = require('path')
 const webpack = require('webpack')
 const ExtractTextPlugin = require('extract-text-webpack-plugin')
 
+// 自动打开浏览器插件
+const OpenBrowserPlugin = require('open-browser-webpack-plugin');
+
 const extractSass = new ExtractTextPlugin({
     filename: '[name].css'
 })
@@ -15,7 +18,8 @@ module.exports = {
         line: path.join(__dirname, 'scripts/line.js'),
         area: path.join(__dirname, 'scripts/area.js'),
         map: path.join(__dirname, 'scripts/map.js'),
-        pie: path.join(__dirname, 'scripts/pie.js')
+        pie: path.join(__dirname, 'scripts/pie.js'),
+        force: path.join(__dirname, 'scripts/force.js')
     },
     output: {
         path: path.join(__dirname, '/dist/'),
@@ -53,6 +57,7 @@ module.exports = {
         }),
         new webpack.DefinePlugin({
             'process.env.NODE_ENV': JSON.stringify('development')
-        })
+        }),
+        new OpenBrowserPlugin({url: 'http://localhost:8080/'})
     ]
 }

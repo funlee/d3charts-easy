@@ -53,7 +53,22 @@ export default {
                 'value|100-200': 100
             }
         ]
-    })
+    }),
+    force:Mock.mock(/\.force/, 
+        function () {
+            function genData() {
+                return Mock.mock({
+                    'data':100
+                })
+            }
+             
+            var data1 = genData()
+            var data2 = genData()
+
+            // var data = data1 + data2
+            return data1
+        }
+    )
 
 }
 

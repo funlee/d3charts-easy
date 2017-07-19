@@ -69,7 +69,6 @@ export default (element, userCfg, data) => {
                 })
         })
 
-
     //绘制柱子
     let barRect = group.select('rect')
 
@@ -118,9 +117,7 @@ export default (element, userCfg, data) => {
             return d.value
         })
 
-
-    //添加坐标轴先移除，这是一个bug
-    svg.selectAll('.axis').remove()
+    //添加坐标轴
 
     //添加X轴
     let xAxisScale = d3.scale.ordinal()
@@ -131,19 +128,32 @@ export default (element, userCfg, data) => {
         .scale(xAxisScale)
         .orient('bottom');
 
+    let isXAxis = svg.select('.x-axis').empty()
+    let xAxisG
+    if(isXAxis) {
+        xAxisG = svg.append('g').attr('class','x-axis axis')
+    } else {
+        xAxisG = svg.select('.x-axis')
+    }
+
+    xAxisG.attr('transform', 'translate(0,' + height + ')')
+        .call(xAxis)
+
     //重新设置y轴比例尺的值域，与原来的相反
     yScale.range([height, 0]);
 
     let yAxis = d3.svg.axis()
         .scale(yScale)
         .orient('left')
-    svg.append('g')
-        .attr('class', 'x-axis axis')
-        .attr('transform', 'translate(0,' + height + ')')
-        .call(xAxis)
 
-    svg.append('g')
-        .attr('class', 'y-axis axis')
-        .attr('transform', 'translate(0,0)')
+    let isYAxis = svg.select('.y-axis').empty()
+    let yAxisG
+    if(isYAxis) {
+        yAxisG = svg.append('g').attr('class','y-axis axis')
+    } else {
+        yAxisG = svg.select('.y-axis')
+    }
+
+    yAxisG.attr('transform', 'translate(0,0)')
         .call(yAxis)
 }

@@ -40,7 +40,6 @@ export default (element, userCfg, data) => {
         {name:'周杰伦的床边故事'}
     ]
 
-
     var edges = [
         {source:0,target:1},
         {source:0,target:2},
@@ -68,16 +67,19 @@ export default (element, userCfg, data) => {
 
     force.start() //开启布局计算
 
-    log(nodes)
-    log(edges)
+    // log(nodes)
+    // log(edges)
 
     //绘制连线
-    var lines = svg.selectAll('.forceLine')
+    let forceLineUpdate = svg.selectAll('.forceLine')
+                        .data(edges)
+        forceLineUpdate.enter().append('line').attr('class','forceLine')
+        forceLineUpdate.exit().remove()
+
+
+    let lines = svg.selectAll('.forceLine')
                     .data(edges)
-                    .enter()
-                    .append('line')
                     .attr({
-                        'class':'forceLine',
                         'fill':'none',
                         'stroke':'#1779f4'
                     })
@@ -87,13 +89,22 @@ export default (element, userCfg, data) => {
                     })
 
     //绘制节点
+    let forceCircleUpdate = svg.selectAll('.forceCircle')
+                        .data(nodes)
+        forceCircleUpdate.enter().append('circle').attr('class','forceCircle')
+        forceCircleUpdate.exit().remove()
+
     var circles = svg.selectAll('.forceCircle')
                 .data(nodes)
-                .enter()
-                .append('circle')
                 .attr({
-                    'class':'forceCircle',
-                    'r':10
+                    'r':(d,i)=>{
+                        if(i == 0) {
+                            return 20
+                        } else {
+                            return 10
+                        }
+                    },
+                    'fixed':true
                 })
                 .style({
                     'fill':(d,i)=>{
@@ -120,6 +131,32 @@ export default (element, userCfg, data) => {
                 .on('mouseout',function() {
                     d3.select('.tooltip').style('display','none')
                 })
+                .on('click',function() {
+
+                    log(56)
+                    
+                })
+
+
+    //绘制中心文字 -- 只展示一个额
+    let isForceText = svg.selectAll('.forceText').empty()
+    let forceText
+    if(isForceText) {
+        forceText = svg.append('text').attr('class','forceText')
+    } else {
+        forceText = svg.select('.forceText')
+    }
+
+    forceText.attr({
+        'x':nodes[0].x,
+        'y':nodes[0].y,
+        'dy':4,
+        'dx':-10
+    })
+    .style({
+        'pointer-events':'none'
+    })
+    .text(nodes[0].name)
 
     //tick事件监听
     force.on('tick',function() {
@@ -135,11 +172,11 @@ export default (element, userCfg, data) => {
             'cx':d=>{return d.x},
             'cy':d=>{return d.y}
         })
-        // //更新节点文字坐标
-        // texts.attr({
-        //     'x':d=>{return d.x},
-        //     'y':d=>{return d.y}
-        // })
+        //更新节点文字坐标
+        forceText.attr({
+            'x':nodes[0].x,
+            'y':nodes[0].y
+        })
     })
 
     //力学图运动开始
@@ -153,8 +190,8 @@ export default (element, userCfg, data) => {
     })
 
     var drag = force.drag()
-                .on('dragstart',d=>{d.fixed = true}) //拖拽开始后设定被拖拽对象为固定
-                .on('dragend',function(d,i){d3.select(this).style('fill',color(i))}) //拖拽结束后变为原来的颜色
+                // .on('dragstart',d=>{d.fixed = true}) //拖拽开始后设定被拖拽对象为固定
+                .on('dragend',function(d,i){d3.select(this).style('fill','rgb(0,233,255)')}) //拖拽结束后变为原来的颜色
                 .on('drag',function(d){d3.select(this).style('fill','yellow')})
 
 

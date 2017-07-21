@@ -43,6 +43,7 @@ export default (element, userCfg, data) => {
 
     let groupUpdate = svg.selectAll('.bar-item').data(dataset)
     let groupEnter = groupUpdate.enter().append('g').attr('class', 'bar-item')
+    //  ---- 机智的解决方案   ---
     groupEnter.append('rect')
     groupEnter.append('text')
     groupUpdate.exit().remove()
@@ -92,15 +93,15 @@ export default (element, userCfg, data) => {
             }
         })
 
-    //绘制Value值
-    let isBarText = group.select('text').empty()
+    //绘制Value值 -- 机智的解决方案
+    // let isBarText = group.select('text')//.empty()
     let barText
 
-    if (isBarText) {
-        barText = group.append('text')
-    } else {
+    // if (isBarText) {
+    //     barText = group.append('text')
+    // } else {
         barText = group.select('text')
-    }
+    // }
 
     barText.attr({
             'x': (d, i) => {

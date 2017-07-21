@@ -19,7 +19,10 @@ module.exports = {
         area: path.join(__dirname, 'scripts/area.js'),
         map: path.join(__dirname, 'scripts/map.js'),
         pie: path.join(__dirname, 'scripts/pie.js'),
-        force: path.join(__dirname, 'scripts/force.js')
+        force: path.join(__dirname, 'scripts/force.js'),
+        chord: path.join(__dirname, 'scripts/chord.js'),
+        tree: path.join(__dirname, 'scripts/tree.js'),
+        ball: path.join(__dirname, 'scripts/ball.js')
     },
     output: {
         path: path.join(__dirname, '/dist/'),

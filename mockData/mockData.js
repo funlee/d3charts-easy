@@ -54,21 +54,42 @@ export default {
             }
         ]
     }),
-    force:Mock.mock(/\.force/, 
-        function () {
-            function genData() {
-                return Mock.mock({
-                    'data':100
-                })
+    force:Mock.mock(/\.force/, {
+        'code': 1,
+        'data|4-7':[
+            {
+                'name': '@cname()',
+                'value|100-200': 100
             }
-             
-            var data1 = genData()
-            var data2 = genData()
-
-            // var data = data1 + data2
-            return data1
-        }
-    )
+        ]
+    }),
+    chord:Mock.mock(/\.chord/, {
+        'code': 1,
+        'data|4-7':[
+            {
+                'name': '@cname()',
+                'value|100-200': 100
+            }
+        ]
+    }),
+    tree:Mock.mock(/\.tree/, {
+        'code': 1,
+        'data|4-7':[
+            {
+                'name': '@cname()',
+                'value|100-200': 100
+            }
+        ]
+    }),
+    ball:Mock.mock(/\.ball/, {
+        'code': 1,
+        'data|4':[
+            {
+                'name': '@cname()',
+                'value|10-100': 10
+            }
+        ]
+    })
 
 }
 

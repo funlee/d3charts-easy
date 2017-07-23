@@ -40,20 +40,6 @@ const bindEvent = () => {
             render(ele,cfg,data.data)
         })
     })
-
-    d3.select('.sz-btn').on('click',function() {
-        catchData.sort(function(a,b) {
-            return a.value - b.value
-        })
-        render(ele,cfg,catchData)
-    })
-
-    d3.select('.dj-btn').on('click',function() {
-        catchData.sort(function(a,b) {
-            return b.value - a.value
-        })
-        render(ele,cfg,catchData)
-    })
 }
 
 

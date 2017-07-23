@@ -83,10 +83,10 @@ export default {
     }),
     ball:Mock.mock(/\.ball/, {
         'code': 1,
-        'data|4':[
+        'data|2-4':[
             {
                 'name': '@cname()',
-                'value|10-100': 10
+                'value|1-100': 1
             }
         ]
     })

@@ -12,7 +12,7 @@ const extractSass = new ExtractTextPlugin({
 module.exports = {
     devtool: 'eval-source-map',
     entry: {
-        vendor: ['d3', 'jquery', 'mockjs'],
+        vendor: ['d3', 'jquery', 'mockjs','echarts','echarts-gl'],
         index: path.join(__dirname, 'scripts/index.js'),
         bar: path.join(__dirname, 'scripts/bar.js'),
         line: path.join(__dirname, 'scripts/line.js'),
@@ -22,7 +22,8 @@ module.exports = {
         force: path.join(__dirname, 'scripts/force.js'),
         chord: path.join(__dirname, 'scripts/chord.js'),
         tree: path.join(__dirname, 'scripts/tree.js'),
-        ball: path.join(__dirname, 'scripts/ball.js')
+        ball: path.join(__dirname, 'scripts/ball.js'),
+        earth: path.join(__dirname, 'scripts/earth.js')
     },
     output: {
         path: path.join(__dirname, '/dist/'),

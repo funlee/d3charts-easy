@@ -1,8 +1,9 @@
 /**
  * @Author:       lee
  * @Email:        i@funlee.cn
- * @DateTime:     2017-07-17 14:51:57
- * @Description:  Description
+ * @DateTime:     2017-07-15 12:10:08
+ * @Description:  将随机数据传给render函数渲染图表
+ * @Last Modified:2017-07-15 12:10:08
  */
 import request from '../request'
 import '../../mockData/mockData'
@@ -16,23 +17,26 @@ export default (element,userCfg={}) => {
     cfg = userCfg
 
     request({
-        url: 'd3charts.pie',
+        url: 'd3charts.shapeBar',
         dataType: 'json'
     }, function(data) {
+
         catchData = data.data
+
         render(element,userCfg,data.data)
         bindEvent()
     })
+
 }
 
 const bindEvent = () => {
     d3.select('.up-btn').on('click',function() {
         request({
-            url: 'd3charts.pie',
+            url: 'd3charts.shapeBar',
             dataType: 'json'
         }, function(data) {
             catchData = data.data
-            
+
             render(ele,cfg,data.data)
         })
     })

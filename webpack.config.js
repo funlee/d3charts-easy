@@ -23,6 +23,10 @@ module.exports = {
         chord: path.join(__dirname, 'scripts/chord.js'),
         tree: path.join(__dirname, 'scripts/tree.js'),
         ball: path.join(__dirname, 'scripts/ball.js'),
+        dote: path.join(__dirname, 'scripts/dote.js'),
+        shapeBar: path.join(__dirname, 'scripts/shapeBar.js'),
+        venation: path.join(__dirname, 'scripts/venation.js'),
+        tile: path.join(__dirname, 'scripts/tile.js'),
         earth: path.join(__dirname, 'scripts/earth.js')
     },
     output: {

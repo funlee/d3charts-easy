@@ -21,6 +21,19 @@ export default (element, userCfg, data) => {
     let width = parseInt(svg.style('width'), 10) - renderCfg.grid.left - renderCfg.grid.right
     let height = parseInt(svg.style('height'), 10) - renderCfg.grid.top - renderCfg.grid.bottom
 
+    //创建一个g元素包裹所有的扇形
+    let isArcWrap = svg.select('.arcWrap').empty()
+    let arcWrap
+    if(isArcWrap) {
+        arcWrap = svg.append('g').attr('class','arcWrap')
+    } else {
+        arcWrap = svg.select('.arcWrap')
+    }
+
+    arcWrap.attr('mask','').style('visibility','hidden')
+
+    svg.classed('ready',false)
+
     let pie = d3.layout.pie()
         .value(function(d) {
             return d.value
@@ -37,7 +50,7 @@ export default (element, userCfg, data) => {
         .innerRadius(innerRadius)
         .outerRadius(outerRadius);
 
-    let arcsUpdate = svg.selectAll('.arcs').data(pieData)
+    let arcsUpdate = arcWrap.selectAll('.arcs').data(pieData)
     let arcsEnter = arcsUpdate.enter().append('g').attr('class', 'arcs')
 
     arcsEnter.append('path').attr('class', 'arcs-path') //把PATH 加上
@@ -46,7 +59,7 @@ export default (element, userCfg, data) => {
 
     arcsUpdate.exit().remove()
 
-    let arcs = svg.selectAll('.arcs').attr('transform', 'translate(' + (width / 2) + ',' + (height / 2) + ')')
+    let arcs = arcWrap.selectAll('.arcs').attr('transform', 'translate(' + (width / 2) + ',' + (height / 2) + ')')
 
     //填充颜色值组
     // let colors = ['#36add0', '#ddc83a', '#8219be', '#2ce996', '#f6e675', '#ef2d8d', '#093544']
@@ -140,4 +153,12 @@ export default (element, userCfg, data) => {
             'fill': 'none',
             'stroke-width': 2
         })
+
+    //添加蒙版动画
+    setTimeout(function() {
+        arcWrap.attr('mask','url(#mask)').style('visibility','visible')
+        svg.classed('ready',true)
+    },1000)
+    
+    
 }

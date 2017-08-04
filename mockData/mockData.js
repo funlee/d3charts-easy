@@ -89,7 +89,42 @@ export default {
                 'value|1-100': 1
             }
         ]
-    })
+    }),
+    dote:Mock.mock(/\.dote/, {
+        'code': 1,
+        'data|40':[
+            {
+                'weight|30-80': 40,
+                'age|10-60': 16
+            }
+        ]
+    }),
+    shapeBar: Mock.mock(/\.shapeBar/, {
+        'code': 1,
+        'data|8':[
+            {
+                'name': '@cname()',
+                'value|100-1000': 10
+            }
+        ] 
+    }),
+    venation:Mock.mock(/\.venation/, {
+        'code': 1,
+        'data|12':[
+            {
+                'value|100-150': 100
+            }
+        ]
+    }),
+    tile: Mock.mock(/\.tile/, {
+        'code': 1,
+        'data|10':[
+            {
+                'name': '@cfirst()',
+                'value|100-1000': 10
+            }
+        ] 
+    }),
 
 }
 

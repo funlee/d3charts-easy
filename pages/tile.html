@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <meta charset="UTF-8">
+        <title>d3charts - 分隔柱图</title>
+        <link rel="stylesheet" type="text/css" href="../style/common.css">
+        <style type="text/css">
+        .bar-item text{fill:#fff;font-size:16px;text-anchor:middle;}
+        .bar-item rect{fill:url(#barGradient);}
+        .spart-line line{
+            stroke-width:2;
+            stroke:black;
+        }
+        </style>
+    </head>
+    <body>
+        <div class="chart">
+            <svg>
+                <defs>
+                    <defs>
+                        <linearGradient id="barGradient" x1="0%" x2="0%" y1="0%" y2="100%">
+                            <stop offset="0%" stop-color="#0c89ff" stop-opacity="1" />
+                            <stop offset="100%" stop-color="#8505ff" stop-opacity="1" />
+                        </linearGradient>
+                        <mask id="maskLine" maskUnits="userSpaceOnUse">
+                            <rect x="0" y="0" width="900" height="500" fill="white" />
+                        </mask>
+                    </defs>
+                </defs>
+            </svg>
+        </div>
+        <div class="btn-wrap">
+            <button class="btn up-btn">更新数据</button>
+            <button class="btn sz-btn">递增排序</button>
+            <button class="btn dj-btn">递减排序</button>
+        </div>
+        <script type="text/javascript" src='../dist/vendor.js'></script>
+        <script type="text/javascript" src='../dist/tile.js'></script>
+    </body>
+</html>
+

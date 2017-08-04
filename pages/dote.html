@@ -1,0 +1,29 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>d3charts - 散点图</title>
+    <link rel="stylesheet" type="text/css" href="../style/common.css">
+    <style type="text/css">
+        circle{
+            opacity: 0;
+            transform: scale(0,0);
+            animation: all 2s ease-out;
+        }
+        .active-dote circle{
+            opacity: 1;
+            transform: scale(1,1);
+        } 
+    </style>
+</head>
+<body>
+    <div class="chart">
+        
+    </div>
+    <div class="btn-wrap">
+        <button class="btn up-btn">更新数据</button>
+    </div>
+    <script type="text/javascript" src='../dist/vendor.js'></script>
+    <script type="text/javascript" src='../dist/dote.js'></script>
+</body>
+</html>

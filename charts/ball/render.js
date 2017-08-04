@@ -179,11 +179,24 @@ export default (element, userCfg, data) => {
         .attr({
             'd': clipArea,
             'fill': 'yellow',
-            'T': 0,
-            'transform': (d, i) => {
-                return 'translate(' + -3 * radius + ',' + wavePercentScale(data[i].value) + ')'
-            }
+            'T': 0
         })
+
+    clipPath.transition()
+            .duration(2000)
+            .attr({
+                'transform': (d, i) => {
+                    return 'translate(' + -3 * radius + ',' + wavePercentScale(data[i].value) + ')'
+                }
+            })
+            .each('start',function() {
+                clipPath.attr({
+                    'transform': (d, i) => {
+                        return 'translate(' + -3 * radius + ',' + radius + ')'
+                    }
+                })
+            })
+
 
     //绘制百分占比数值 -- 严格的绘制顺序决定层级
     ballEnter.append('text').attr('class', 'valueText')
@@ -205,7 +218,7 @@ export default (element, userCfg, data) => {
                 d3.select(this).text(Math.floor(Number(inittx) + t * d[0][0]))
             }
         })
-        //绘制value值百分比符号
+    //绘制value值百分比符号
     ballEnter.append('text').attr('class', 'percentText')
     let percentText = ballGroup.select('.percentText')
         .attr({
@@ -218,17 +231,20 @@ export default (element, userCfg, data) => {
         .text('%')
 
     //用定时器做波浪动画
-    let distance = -3 * radius
-    d3.timer(waveTimer)
-    function waveTimer() {
-        distance++
-        if (distance > -radius) {
-            distance = -3 * radius
-        }
-        clipPath.attr({
-            'transform': (d, i) => {
-                return 'translate(' + distance + ',' + wavePercentScale(data[i].value) + ')'
+    setTimeout(function() {
+        let distance = -3 * radius
+        d3.timer(waveTimer)
+        function waveTimer() {
+            distance++
+            if (distance > -radius) {
+                distance = -3 * radius
             }
-        })
-    }
+            clipPath.attr({
+                'transform': (d, i) => {
+                    return 'translate(' + distance + ',' + wavePercentScale(data[i].value) + ')'
+                }
+            })
+        }
+    },2000)
+    
 }

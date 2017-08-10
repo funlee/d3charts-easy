@@ -12,7 +12,7 @@ export default {
         'code': 1,
         'data|14-18':[
             {
-                'name': '@cname()',
+                'name': '@cname',
                 'value|100-1000': 10
             }
         ] 
@@ -49,7 +49,7 @@ export default {
         'code': 1,
         'data|4-7':[
             {
-                'name': '@cname()',
+                'name': '@cname',
                 'value|100-200': 100
             }
         ]
@@ -58,7 +58,7 @@ export default {
         'code': 1,
         'data|4-7':[
             {
-                'name': '@cname()',
+                'name': '@cname',
                 'value|100-200': 100
             }
         ]
@@ -67,7 +67,7 @@ export default {
         'code': 1,
         'data|4-7':[
             {
-                'name': '@cname()',
+                'name': '@cname',
                 'value|100-200': 100
             }
         ]
@@ -76,7 +76,7 @@ export default {
         'code': 1,
         'data|4-7':[
             {
-                'name': '@cname()',
+                'name': '@cname',
                 'value|100-200': 100
             }
         ]
@@ -85,7 +85,7 @@ export default {
         'code': 1,
         'data|2-4':[
             {
-                'name': '@cname()',
+                'name': '@cname',
                 'value|1-100': 1
             }
         ]
@@ -103,7 +103,7 @@ export default {
         'code': 1,
         'data|8':[
             {
-                'name': '@cname()',
+                'name': '@cname',
                 'value|100-1000': 10
             }
         ] 
@@ -120,11 +120,26 @@ export default {
         'code': 1,
         'data|10':[
             {
-                'name': '@cfirst()',
+                'name': '@cfirst',
                 'value|100-1000': 10
             }
         ] 
     }),
+    radar: Mock.mock(/\.radar/, {
+        'code': 1,
+        'data':{
+            'data1|5':[
+                {
+                    'value|10-100': 10
+                }
+            ],
+            'data2|5':[
+                {
+                    'value|10-100': 10
+                }
+            ]
+        }
+    })
 
 }
 

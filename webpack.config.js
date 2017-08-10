@@ -27,6 +27,7 @@ module.exports = {
         shapeBar: path.join(__dirname, 'scripts/shapeBar.js'),
         venation: path.join(__dirname, 'scripts/venation.js'),
         tile: path.join(__dirname, 'scripts/tile.js'),
+        radar: path.join(__dirname, 'scripts/radar.js'),
         earth: path.join(__dirname, 'scripts/earth.js')
     },
     output: {
@@ -66,6 +67,6 @@ module.exports = {
         new webpack.DefinePlugin({
             'process.env.NODE_ENV': JSON.stringify('development')
         }),
-        new OpenBrowserPlugin({url: 'http://localhost:8080/'})
+        new OpenBrowserPlugin({url: 'http://localhost:8888/'})
     ]
 }

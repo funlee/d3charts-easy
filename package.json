@@ -7,7 +7,7 @@
     "doc": "doc"
   },
   "scripts": {
-    "start": "rimraf dist && webpack-dev-server --inline --watch --hot --progress --config webpack.config.js",
+    "start": "rimraf dist && webpack-dev-server --inline --port 8888 --watch --hot --progress --config webpack.config.js",
     "build": "rimraf dist && webpack --config ./webpack.production.js --progress --profile --colors"
   },
   "author": "funlee",

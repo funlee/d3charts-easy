@@ -15,13 +15,15 @@ module.exports = {
   },
   devtool:'inline-source-map',
   devServer:{
-    port:9090,
+    port:8080,
     hot:true
   },
   plugins:[
-    new CleanWebpackPlugin(['dist']),
+    new CleanWebpackPlugin(['dist'], {
+      root: path.join(__dirname, '../')
+    }),
     new HtmlWebpackPlugin({
-      template: path.join(__dirname, '../src/index.html')
+      template: path.join(__dirname, '../src/index.hbs')
     }),
     new webpack.optimize.CommonsChunkPlugin({
       name: 'vendor',
@@ -54,11 +56,18 @@ module.exports = {
       },
       {
         test:/\.(png|svg|jpg|gif)$/,
-        use:'url-loader?limit=50000&name=[path][name].[ext]'
+        loader:'url-loader',
+        options: {
+          limit: 50000,
+          name: 'img/[name].[ext]'
+        }
       },
       {
         test: /\.hbs$/,
-        loader: 'handlebars-loader'
+        loader: 'handlebars-loader',
+        options: {
+          inlineRequires: /\.(png|svg|jpg|gif)$/,
+        }
       }
     ]
   }

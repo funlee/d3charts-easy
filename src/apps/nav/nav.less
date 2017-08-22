@@ -1,0 +1,115 @@
+.btn{
+  display:inline-block;
+  height:50px;
+  min-width: 160px;
+  text-align:center;
+  cursor:pointer;
+  background: linear-gradient(#1c1c1c, #1b1b1b);
+  border-bottom: 2px solid #222222;
+  border-top: 2px solid #1B1B1B;
+  use-select:none;
+  span{
+    border-left: 3px solid rgba(0, 0, 0, 0);
+    color: #808080;
+    display: block;
+    font-size: 18px;
+    line-height: 50px;
+    padding: 0 25px;
+    use-select:none;
+  }
+}
+.update-btn{
+  position:absolute;
+  top:0;
+  left:50%;
+  transform:translate(-520px,0);
+  &:hover{
+    span{
+      border-radius: 5px 0 0 0;
+      border-left: 3px solid #C4302B;
+      color: #C4302B;
+    }
+  }
+}
+.nav{
+  position: absolute;
+  top: 0;
+  left: 50%;
+  transform:translate(-700px,0);
+  &:hover{
+    .select-btn{
+      span{
+        border-radius: 5px 0 0 0;
+        border-left: 3px solid #C4302B;
+        color: #C4302B;
+      }
+      &:hover{
+        .nav-list{
+          max-height: 2000px;
+          z-index: 2;
+        }
+      }
+    }
+    .nav-list{
+      li{
+        opacity: 1;
+        transform: none;
+      }
+    }
+  }
+  .nav-list{
+    left: 0;
+    max-height: 0;
+    position: absolute;
+    top: 100%;
+    z-index: 0;
+    perspective: 400px;
+    li{
+      list-style: none;
+      opacity: 0;
+      transform: rotateY(90deg);
+      transition: opacity .4s, transform .5s;
+      cursor:pointer;
+      background: linear-gradient(#292929, #252525);
+      border-bottom: 2px solid #181818;
+      border-top: 2px solid #303030;
+      min-width: 160px;
+      span{
+        border-left: 3px solid rgba(0, 0, 0, 0);
+        color: #808080;
+        display: block;
+        font-size: 14px;
+        line-height: 50px;
+        padding: 0 25px;
+      }
+      &:nth-child(1){
+        transition-delay: 0;
+      }
+      &:nth-child(2){
+        transition-delay: 50ms;
+      }
+      &:nth-child(3){
+        transition-delay: 100ms;
+      }
+      &:nth-child(4){
+        transition-delay: 150ms;
+      }
+      &:nth-child(5){
+        transition-delay: 200ms;
+      }
+      &:nth-child(6){
+        transition-delay: 250ms;
+      }
+      &:nth-child(7){
+        transition-delay: 300ms;
+      }
+      &:hover{
+        span{
+          border-left: 3px solid #454545;
+          border-radius: 0;
+          color: #ffffff;
+        }
+      }
+    }
+  }
+}

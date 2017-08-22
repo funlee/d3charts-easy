@@ -1,7 +1,0 @@
-*{margin:0;padding:0;}
-html,body{height:100%;width:100%;background:#001949;}
-svg{display:block;margin:0 auto;}
-.btn-wrap{text-align:center;}
-.axis path,.axis line{fill:none;stroke:#4675b0;shape-rendering:optimizeSpeed;}
-.axis text{font-size:16px;font-family:sans-serif;fill:#c3e2ff;}
-.btn{display:inline-block;padding:6px 12px;margin-bottom:0;font-size:14px;font-weight:400;line-height:1.42857143;text-align:center;white-space:nowrap;vertical-align:middle;-ms-touch-action:manipulation;touch-action:manipulation;cursor:pointer;-webkit-user-select:none;-moz-user-select:none;-ms-user-select:none;user-select:none;background-image:none;border:1px solid transparent;border-radius:4px;}

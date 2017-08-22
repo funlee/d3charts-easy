@@ -1,0 +1,34 @@
+*{margin:0;padding:0;}
+html,
+body{background:#001122;width:100%;height:100%;}
+.app{width:100%;height:100%;position:relative;overflow:hidden;}
+svg{display:block;position:absolute;top:50%;left:50%;transform:translate(-50%,-50%);}
+
+/*坐标轴*/
+.axis path,
+.axis line{fill:none;stroke:#4675b0;shape-rendering:optimizeSpeed;}
+.axis text{font-size:16px;font-family:sans-serif;fill:#c3e2ff;}
+
+/*柱状图*/
+.bar-item text{fill:#fff;font-size:16px;text-anchor:middle;}
+.bar-item rect{fill:url(#splitGradient);}
+.spart-line line{stroke-width:2;stroke:black;}
+
+/*折线图*/
+.active-line{stroke-dasharray:1000;stroke-dashoffset:1000;animation:dash 3s linear forwards;}
+@keyframes dash{
+  to{stroke-dashoffset:0;}
+}
+
+/*饼图*/
+.tooltip{display:none;position:absolute;font-size:14px;line-height:22px;padding:8px 10px;color:#fff;border-radius:4px;background:rgba(50,50,50,.7);z-index:10}
+.ready .rotate{animation:rotate 4s linear;transform-origin:430px 200px;fill:white;}
+@keyframes rotate{
+  0%{transform:rotate(0deg);fill:white;}
+  100%{fill:white;transform:rotate(-360deg);}
+}
+.ready .fix{animation:fix 4s step-start;fill:white;transform:translateX(-430px);}
+@keyframes fix{
+  50%{transform:translateX(0);fill:black;}
+  100%{fill:white;transform:translateX(-430px);}
+}

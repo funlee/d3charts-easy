@@ -2,6 +2,7 @@ const path = require('path')
 const HtmlWebpackPlugin = require('html-webpack-plugin')
 const CleanWebpackPlugin = require('clean-webpack-plugin')
 const webpack = require('webpack')
+const OpenBrowserPlugin = require('open-browser-webpack-plugin')
 
 module.exports = {
   entry: {
@@ -25,12 +26,16 @@ module.exports = {
     new HtmlWebpackPlugin({
       template: path.join(__dirname, '../src/index.hbs')
     }),
+    //避免重复打包
     new webpack.optimize.CommonsChunkPlugin({
       name: 'vendor',
       chunks: ['bundle'],
       minChunks: Infinity
     }),
-    new webpack.HotModuleReplacementPlugin()
+    new webpack.HotModuleReplacementPlugin(),
+    new OpenBrowserPlugin({
+      url:'http://localhost:8080'
+    })
   ],
   module:{
     rules:[
